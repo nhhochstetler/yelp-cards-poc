@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/filterLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.allattentionhere.fabulousfilter.AAH_FilterView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:visibility="invisible"
+            tools:ignore="MissingPrefix"
+            android:padding="10dp"
+            tools:visibility="visible">
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Open Now"
+                android:textColor="@android:color/white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/imageButton1"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:background="@null"-->
+                        <!--android:layout_weight="1"-->
+                        <!--app:srcCompat="@drawable/ic_attach_money_black_48dp"-->
+                        <!--android:scaleType="fitCenter"/>-->
+
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/imageButton2"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:background="@null"-->
+                        <!--android:layout_weight="1"-->
+                        <!--app:srcCompat="@drawable/ic_attach_money_black_48dp"-->
+                        <!--android:scaleType="fitCenter"/>-->
+
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/imageButton3"-->
+                        <!--android:layout_width="20dp"-->
+                        <!--android:layout_height="20dp"-->
+                        <!--android:background="@null"-->
+                        <!--android:layout_weight="1"-->
+                        <!--app:srcCompat="@drawable/ic_attach_money_black_48dp"-->
+                        <!--android:scaleType="fitCenter"/>-->
+
+                <!--</LinearLayout>-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorAccent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btn_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Close" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.allattentionhere.fabulousfilter.AAH_FilterView>
 
 </android.support.constraint.ConstraintLayout>
