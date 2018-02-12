@@ -1,28 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_main"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:id="@+id/taskbar"
+        android:gravity="bottom"
+        android:background="@color/cardview_dark_background"
+        android:layout_alignParentBottom="true" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:text="TextView" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_filter_list_white_48dp" />
+
+    </LinearLayout>
 
     <com.huxq17.swipecardsview.SwipeCardsView
         android:id="@+id/swipeCardsView"
+        android:layout_above="@id/taskbar"
         android:background="#f3f3f3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:alphaOffsetStep="20"
         app:scaleOffsetStep=".08"
-        app:yOffsetStep="20dp">
+        app:yOffsetStep="23dp" >
 
     </com.huxq17.swipecardsview.SwipeCardsView>
 
-    <TextView
-        android:id="@+id/textView2"
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="bottom"
-        android:text="TextView" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

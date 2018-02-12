@@ -2,6 +2,7 @@ package com.whattoeat.natehochstetler.whattoeat;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -10,8 +11,12 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,38 +37,19 @@ import java.util.concurrent.ExecutionException;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements AsyncResponse, LocationListener {
+public class MainActivity extends AppCompatActivity implements AsyncResponse {
 
     private SwipeCardsView swipeCardsView;
     private ArrayList<Business> businessList = new ArrayList<>();
     private String latitude;
     private String longitude;
     protected LocationManager locationManager;
+    private CardAdapter cardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            // The ACCESS_COARSE_LOCATION is denied, then I request it and manage the result in
-//            // onRequestPermissionsResult() using the constant MY_PERMISSION_ACCESS_FINE_LOCATION
-//            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-//                ActivityCompat.requestPermissions(this,
-//                        new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
-//                        11);
-//            }
-//            // The ACCESS_FINE_LOCATION is denied, then I request it and manage the result in
-//            // onRequestPermissionsResult() using the constant MY_PERMISSION_ACCESS_FINE_LOCATION
-//            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-//                ActivityCompat.requestPermissions(this,
-//                        new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION },
-//                        12);
-//            }
-//        } else {
-//            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 50, this);
-//        }
 
         getData();
 
@@ -98,7 +84,10 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse, Lo
 
             @Override
             public void onItemClick(View cardImageView, int index) {
+                TextView direction = (TextView)findViewById(R.id.textView2);
 
+                Log.d("TYPE", "CLICK");
+                direction.setText("CLICKED " + Integer.toString(index));
             }
         });
     }
@@ -119,31 +108,8 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse, Lo
     @Override
     public void processFinish(ArrayList<Business> output) {
         businessList.addAll(output);
-        CardAdapter cardAdapter = new CardAdapter(businessList, this);
+        cardAdapter = new CardAdapter(businessList, this);
         swipeCardsView.setAdapter(cardAdapter);
-    }
-
-    @Override
-    public void onLocationChanged(android.location.Location location) {
-        latitude = Double.toString(location.getLatitude());
-        longitude = Double.toString(location.getLongitude());
-        Log.d("Coordinates", latitude + ", " + longitude);
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-        Log.d("Latitude","disable");
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-        Log.d("Latitude","enable");
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        Log.d("Latitude","status");
     }
 
 }

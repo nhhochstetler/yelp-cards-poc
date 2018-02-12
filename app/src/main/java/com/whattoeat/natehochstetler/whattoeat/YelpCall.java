@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.yelp.fusion.client.connection.YelpFusionApi;
 import com.yelp.fusion.client.connection.YelpFusionApiFactory;
@@ -26,10 +28,12 @@ import retrofit2.Response;
 public class YelpCall extends AsyncTask<Map<String, String>, String, ArrayList<Business>> {
 
     AsyncResponse activity;
+    Activity main;
     String clientId;
     String clientSecret;
 
     public YelpCall(Activity activity, String clientId, String clientSecret) {
+        this.main = activity;
         this.activity = (AsyncResponse) activity;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
@@ -58,6 +62,7 @@ public class YelpCall extends AsyncTask<Map<String, String>, String, ArrayList<B
     protected void onPostExecute(ArrayList<Business> result) {
         super.onPostExecute(result);
         activity.processFinish(result);
+        ((ProgressBar) main.findViewById(R.id.progressBar2)).setVisibility(View.GONE);
     }
 
 
