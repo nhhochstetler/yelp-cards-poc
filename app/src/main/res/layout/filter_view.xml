@@ -21,15 +21,39 @@
             android:background="@color/colorPrimary"
             android:visibility="invisible"
             tools:ignore="MissingPrefix"
-            android:padding="10dp"
             tools:visibility="visible">
 
-            <Switch
-                android:id="@+id/switch1"
+            <android.support.design.widget.TabLayout
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextColor="#FFF"
+                android:id="@+id/tabs_types"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:text="Open Now"
-                android:textColor="@android:color/white"/>
+                android:layout_height="48dp"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@android:color/white"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="fixed"
+                app:tabMaxWidth="0dp"
+                app:tabPaddingBottom="0dp"
+                app:tabPaddingEnd="0dp"
+                app:tabPaddingStart="0dp"
+                app:tabPaddingTop="0dp" />
+
+            <android.support.v4.view.ViewPager
+                android:layout_below="@+id/tabs_types"
+                android:id="@+id/vp_types"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="56dp"
+                android:elevation="-4dp" />
+
+            <!--<Switch-->
+                <!--android:id="@+id/switch1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:text="Open Now"-->
+                <!--android:textColor="@android:color/white"/>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -81,12 +105,23 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <Button
-                    android:id="@+id/btn_close"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:background="@drawable/states_fab_button"
+                    android:id="@+id/imgbtn_refresh"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="Close" />
+                    android:src="@drawable/refresh"
+                    android:tint="@android:color/white" />
+
+                <ImageButton
+                    android:background="@drawable/states_fab_button"
+                    android:id="@+id/imgbtn_apply"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/done"
+                    android:tint="@android:color/white" />
             </LinearLayout>
 
         </RelativeLayout>
